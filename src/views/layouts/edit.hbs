@@ -32,7 +32,8 @@
             thumbnail: input[2].value
         }
         console.log(objSend)
-        fetch(`http://127.0.0.1:8080/api/productos/{{edit.id}}`,
+        // TODO: fix  address to be the correct one always
+        fetch(`http://192.168.30.107:8080/products/{{edit.id}}`,
         {
             method: "PUT",
             headers:

@@ -9,10 +9,13 @@ class Product {
   async create(req, res) {
     const insertData = req.body;
     insertData.id = data.length;
+    console.log(insertData);
     data.push(insertData);
-    await promises.writeFile('./products.json', JSON.stringify(data));
-    //return res.json({ producto: 'Producto creado' });
-    return res.redirect('/products/new');
+    await promises.writeFile(
+      __dirname + '/json/products.json',
+      JSON.stringify(data),
+    );
+    return res.redirect('/products');
   }
   getAll(_req, res) {
     visitas.visitas.items = visitas.visitas.items + 1;
