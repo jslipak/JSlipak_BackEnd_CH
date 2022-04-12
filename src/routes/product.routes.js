@@ -4,15 +4,8 @@ import { readFileSync } from 'fs';
 import __dirname from '../util.js';
 
 const data = JSON.parse(readFileSync(__dirname + '/productos.json', 'utf8'));
-console.log(data);
 
 let visitas = { visitas: { items: 0, item: 0 } };
-
-router.get('/:id', (req, res) => {
-  console.log(req.params.id);
-  let obj = data.find((x) => x.id == req.params.id);
-  res.json({ item: obj });
-});
 
 router.post('/', async (req, res) => {
   const objectArray = await import(
@@ -45,6 +38,12 @@ router.get('/visitas', (req, res) => {
 router.get('/', (_req, res) => {
   res.json({ items: data, cantidad: data.length });
   visitas.visitas.items = visitas.visitas.items + 1;
+});
+
+router.get('/:id', (req, res) => {
+  console.log(req.params.id);
+  let obj = data.find((x) => x.id == req.params.id);
+  res.json({ item: obj });
 });
 
 export default router;
