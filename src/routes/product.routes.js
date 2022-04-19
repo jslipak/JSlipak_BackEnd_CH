@@ -3,47 +3,64 @@ const router = express.Router();
 import { readFileSync } from 'fs';
 import __dirname from '../util.js';
 
-const data = JSON.parse(readFileSync(__dirname + '/productos.json', 'utf8'));
+const data = JSON.parse(
+  readFileSync(__dirname + '/json/products.json', 'utf8'),
+);
 
-let visitas = { visitas: { items: 0, item: 0 } };
+// TODO: Write a FS json file with the prouducts in Delete , Post , Update
+
+router.get('/', (_req, res) => {
+  res.json({ items: data });
+});
 
 router.post('/', async (req, res) => {
   const objectArray = await import(
     __dirname + '/services/objectArray.services.js'
   );
   const arrayClass = new objectArray.default(data);
-  console.log(arrayClass);
   const maxId = await arrayClass.getMaxId();
-
   const newProduct = {
     id: maxId + 1,
+    timestamp: new Date(),
     title: req.body.title,
-    price: req.body.price,
+    description: req.body.description,
+    code: req.body.code,
     thumbnail: req.body.thumbnail,
+    price: req.body.price,
+    stock: req.body.stock,
   };
   data.push(newProduct);
   res.json({ item: newProduct });
 });
 
-router.get('/item-random', (req, res) => {
-  console.log('aca esta data', data);
-  res.json(data[Math.floor(Math.random() * data.length)]);
-  visitas.visitas.item = visitas.visitas.item + 1;
-});
-
-router.get('/visitas', (req, res) => {
-  res.json(visitas);
-});
-
-router.get('/', (_req, res) => {
-  res.json({ items: data, cantidad: data.length });
-  visitas.visitas.items = visitas.visitas.items + 1;
-});
-
-router.get('/:id', (req, res) => {
-  console.log(req.params.id);
-  let obj = data.find((x) => x.id == req.params.id);
+router.get('/:pid', (req, res) => {
+  console.log(req.params.pid);
+  let obj = data.find((x) => x.id == req.params.pid);
   res.json({ item: obj });
+});
+
+router.delete('/:pid', (req, res) => {
+  console.log(req.params.pid);
+  let obj = data.find((x) => x.id == req.params.pid);
+  data.splice(data.indexOf(obj), 1);
+  res.json({ item: obj });
+});
+
+router.put('/:pid', (req, res) => {
+  // TODO: Save in FS
+  console.log(req.params.pid);
+  let objId = data.findIndex((x) => x.id == req.params.pid);
+  data[objId] = {
+    id: req.params.pid,
+    timestamp: new Date(),
+    title: req.body.title,
+    description: req.body.description,
+    code: req.body.code,
+    thumbnail: req.body.thumbnail,
+    price: req.body.price,
+    stock: req.body.stock,
+  };
+  res.json({ item: data[objId] });
 });
 
 export default router;
