@@ -1,13 +1,26 @@
-import express from 'express';
+const express = require('express');
 const app = express();
 const puerto = process.env.PORT || 8080;
-import __dirname from './util.js';
-import morgan from 'morgan';
-import handlebars from 'express-handlebars';
+const morgan = require('morgan');
+const handlebars = require('express-handlebars');
+const { NODE_ENV } = process.env;
+
+if (NODE_ENV === 'mongo') {
+  const mongoose = require('mongoose');
+  const URL =
+    'mongodb://root:example@127.0.0.1:27017/ecommerce?authSource=admin';
+  mongoose
+    .connect(URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((data) => console.log('se ha conectado con mongo'))
+    .catch((err) => console.log(err));
+}
 
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
-import indexRouter from './routes/index.routes.js';
+const indexRouter = require('./routes/index.routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
