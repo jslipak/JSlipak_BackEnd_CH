@@ -1,4 +1,5 @@
-const dbConfig = require('../config/db.config');
+const { NODE_ENV } = process.env;
+const dbConfig = require(`../config/db.${NODE_ENV}.config`);
 
 class Product {
   async getAll(req, res) {
@@ -42,7 +43,7 @@ class Product {
       stock: req.body.stock,
     };
     const objRes = await db.updateById(req.params.pid, obj);
-    res.json({ item: objRes });
+    res.json({ item: obj });
   }
 }
 

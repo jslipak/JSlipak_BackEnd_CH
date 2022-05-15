@@ -1,4 +1,4 @@
-const dbConfig = require('../config/db.config');
+const dbConfig = require('../config/db.mongo.config');
 const mongoose = require('mongoose');
 
 class Cart {

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { NODE_ENV } = process.env;
 const { readFileSync } = require('fs');
-const Products = require('../services/product.services');
+const Products = require(`../services/product.${NODE_ENV}.services`);
 
 router.get('/', Products.getAll);
 router.post('/', Products.create);
