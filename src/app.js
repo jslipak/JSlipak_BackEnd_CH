@@ -20,7 +20,7 @@ if (NODE_ENV === 'mongo') {
   // add credential outside of the scoop to git don't put it github
   // IMPROVE: with dotenv --> have a issue with parser
   var admin = require('firebase-admin');
-  const firebaseKey = require('../../../ecommercecoder-c1868-firebase-adminsdk-xf5z3-5f4d046d8b.json');
+  const firebaseKey = require('./../../ecommercecoder-c1868-firebase-adminsdk-xf5z3-5f4d046d8b.json');
   admin.initializeApp({
     credential: admin.credential.cert(firebaseKey),
     databaseURL: 'https:/ecommercecoder-c1868.firebaseio.com',
