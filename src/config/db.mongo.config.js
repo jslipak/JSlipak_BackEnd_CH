@@ -1,6 +1,15 @@
 const mongoose = require('mongoose');
 const products = require('../models/product.mongo.models');
 const carts = require('../models/cart.mongo.models');
+const URL = 'mongodb://root:example@127.0.0.1:27017/ecommerce?authSource=admin';
+
+mongoose
+  .connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((data) => console.log('se ha conectado con mongo'))
+  .catch((err) => console.log(err));
 
 class CollectionCRUD {
   constructor(doc) {

@@ -46,7 +46,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/products/11",
+							"raw": "http://127.0.0.1:8080/api/products/627c2ad9341660a45f5fca7e",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -58,7 +58,7 @@
 							"path": [
 								"api",
 								"products",
-								"11"
+								"627c2ad9341660a45f5fca7e"
 							]
 						}
 					},
@@ -71,7 +71,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": " {\n    \"title\": \"Ida Livingston\",\n    \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n    \"thumbnail\": \"http://placehold.it/32x32\",\n    \"price\": \"$3,014.79\",\n    \"stock\": 24\n  }",
+							"raw": " {\n    \"title\": \"Tu Vieja no se borra nunca\",\n    \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n    \"description\": \"hola mundo\",\n    \"thumbnail\": \"http://placehold.it/32x32\",\n    \"price\": 3.014,\n    \"stock\": 0\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -98,13 +98,37 @@
 					"response": []
 				},
 				{
+					"name": "Find One by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/products/H9XoGYhQ3vlFpy4hFwV8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"H9XoGYhQ3vlFpy4hFwV8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update Product by ID",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \n    \"title\": \"Zimmerman Cash\",\n    \"code\": \"1c2ca6f9-1de3-4b0b-aa8a-cf7b4564b2bc\",\n    \"thumbnail\": \"http://placehold.it/31x32\",\n    \"price\": \"$0,134.73\",\n    \"stock\": 348\n  }\n",
+							"raw": "{\n            \"_id\": \"62812494ef3d0e12bc645a25\",\n            \"title\": \"update.teste\",\n            \"description\":\"euaoeuaoetuhoeunsat;e'm\",\n            \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n            \"thumbnail\": \"http://placehold.it/32x32\",\n            \"price\": 3.014,\n            \"stock\": 156,\n            \"timestamp\": \"2022-05-15T16:04:36.421Z\",\n            \"__v\": 0\n        }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -112,7 +136,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/products/7",
+							"raw": "http://127.0.0.1:8080/api/products/H9XoGYhQ3vlFpy4hFwV8",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -124,31 +148,7 @@
 							"path": [
 								"api",
 								"products",
-								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Find One by ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8080/api/products/4",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"products",
-								"4"
+								"H9XoGYhQ3vlFpy4hFwV8"
 							]
 						}
 					},
@@ -191,21 +191,12 @@
 					"response": []
 				},
 				{
-					"name": "Delete ono Order by id",
+					"name": "Show Cart by ID",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"user\":\"admin\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/carts//4",
+							"raw": "http://127.0.0.1:8080/api/carts/LtT0bTDZvbtJBByDXPjU",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -217,8 +208,32 @@
 							"path": [
 								"api",
 								"carts",
-								"",
-								"4"
+								"LtT0bTDZvbtJBByDXPjU"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Producs in CID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/carts/LtT0bTDZvbtJBByDXPjU/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"LtT0bTDZvbtJBByDXPjU",
+								"products"
 							]
 						}
 					},
@@ -257,61 +272,13 @@
 					"response": []
 				},
 				{
-					"name": "Show Cart by ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8080/api/carts/2",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carts",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Show Product of CID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8080/api/3/products",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"3",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "add product Into CID",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"pid\": 74,\n        \"quantity\": 4\n}\n    ",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -319,7 +286,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/carts/3/products",
+							"raw": "http://127.0.0.1:8080/api/carts/LtT0bTDZvbtJBByDXPjU/products/H9XoGYhQ3vlFpy4hFwV8",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -331,8 +298,42 @@
 							"path": [
 								"api",
 								"carts",
-								"3",
-								"products"
+								"LtT0bTDZvbtJBByDXPjU",
+								"products",
+								"H9XoGYhQ3vlFpy4hFwV8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ono Order by Cid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\":\"admin\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/carts/1lOlqIA4woMcuimzmN9P",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"1lOlqIA4woMcuimzmN9P"
 							]
 						}
 					},
@@ -353,7 +354,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/carts/0/products/6",
+							"raw": "http://127.0.0.1:8080/api/carts/628093eb1105e2cc2bffc7f5/products/627c3fa9951fe587e7963002",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -365,9 +366,9 @@
 							"path": [
 								"api",
 								"carts",
-								"0",
+								"628093eb1105e2cc2bffc7f5",
 								"products",
-								"6"
+								"627c3fa9951fe587e7963002"
 							]
 						}
 					},
