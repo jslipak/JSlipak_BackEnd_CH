@@ -16,7 +16,7 @@
 
 
 ### Nota 
-1. La probe en linux y may --> windows no uso por lo que te recomiendo si lo vas a revisar en window uses el WSL que trae por defecto(windows subsystem for linux)
+1. La probe en linux y mac --> windows no uso por lo que te recomiendo si lo vas a revisar en window uses el WSL que trae por defecto(windows subsystem for linux)
 2. Cualquier cosa que quieras o tengas dudas o si queres hacer una llamada y que te muestre como ande me avisas.
 
 
