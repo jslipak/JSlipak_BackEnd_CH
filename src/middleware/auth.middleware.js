@@ -1,12 +1,10 @@
 const auth = function (req, res, next) {
-  if (true) {
+  if (req.session.user) {
     console.log('auth successful');
     return next();
   } else {
     console.log('auth failed');
-    return res.status(401).json({
-      message: 'Auth failed',
-    });
+    return res.status(401).redirect('/');
   }
 };
 
