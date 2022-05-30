@@ -11,6 +11,9 @@
 <body>
     <div class="container">
         <%- include('../partials/navbar') %>
+        <% if (msg){  %>
+                <h2><%= msg %></h2>
+         <% } %>
         <h1>Bienvenido <%- name %></h1>
     </div>
 </body>
