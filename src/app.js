@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const URL = 'mongodb://root:example@127.0.0.1:27017/ecommerce?authSource=admin';
 const { NODE_ENV } = process.env;
-
+console.log(process);
 mongoose
   .connect(URL, {
     useNewUrlParser: true,
