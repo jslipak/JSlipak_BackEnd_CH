@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const route = Router();
+const router = Router();
 
-route.get('/con-session', (req, res) => {
+router.get('/con-session', (req, res) => {
   if (req.session.contador) {
     req.session.contador++ |
       res.send(`Ud. ha visitado el sitio ${req.session.contador} veces.`);
@@ -11,7 +11,7 @@ route.get('/con-session', (req, res) => {
   }
 });
 
-route.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
   console.log(req.body);
   console.log(req.session);
   if (!req.session.user) {
@@ -20,7 +20,7 @@ route.post('/login', (req, res) => {
     res.redirect('/home');
   }
 });
-route.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   const name = req.session.user;
   req.session.destroy((err) => {
     if (!err) {
@@ -32,4 +32,4 @@ route.get('/logout', (req, res) => {
     }
   });
 });
-module.exports = route;
+module.exports = router;

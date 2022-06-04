@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -24,19 +24,19 @@
                     <!--</div>-->
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="/auth/signup" method="post" enctype="multipart/form">
                         <div class="input-group form-group m-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="username">
+                            <input type="email" name="username" class="form-control" placeholder="E-mail">
 
                         </div>
                         <div class="input-group form-group m-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password">
+                            <input type="password" name="password" class="form-control" placeholder="password">
                         </div>
                         <div class="input-group form-group m-3">
                             <div class="input-group-prepend">
@@ -51,6 +51,16 @@
                             <input type="submit" value="register" class="btn float-right login_btn">
                         </div>
                     </form>
+
+                
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Do have an account? <a href="/">login</a>
+                    </div>
+                    <!--<div class="d-flex justify-content-center">-->
+                        <!--<a href="#">Forgot your password?</a>-->
+                    <!--</div>-->
+                </div>
                 </div>
                 <!--<div class="card-footer">-->
                     <!--<div class="d-flex justify-content-center links">-->
