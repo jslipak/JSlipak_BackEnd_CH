@@ -1,3 +1,4 @@
+const env = require('./config/process.config');
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -5,12 +6,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
-const puerto = process.env.PORT || 8080;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const indexRouter = require('./routes/index.routes');
 const URL = 'mongodb://root:example@127.0.0.1:27017/ecommerce?authSource=admin';
 const flash = require('connect-flash');
-const { NODE_ENV } = process.env;
+const puerto = env.PORT || 8080;
 
 mongoose
   .connect(URL, {
@@ -53,7 +54,6 @@ app.set('views', './src/views');
 
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
-const indexRouter = require('./routes/index.routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth.middleware');
-
+const env = require('../config/process.config');
 router.get('/', (req, res) => {
   req.user?.username
     ? res.render('pages/home', {
@@ -16,6 +16,11 @@ router.get('/signup', (req, res) => {
 
 router.get('/home', auth, (req, res) => {
   res.render('pages/home', { name: req.user.username, msg: false });
+});
+
+router.get('/info', (req, res) => {
+  console.log(env);
+  res.render('pages/info', { env });
 });
 
 router.get('/error', (req, res) => {
