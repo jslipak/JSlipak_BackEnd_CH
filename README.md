@@ -1,22 +1,27 @@
-# second review
+#balance de carga
 
-## Firebase 
-1. Arranca con: "npm run firebase"
-2. El json con el certificado tiene que estar una carpeta por de tras de clone para no esponer la credencial --> no se pudo hacer con dotenv porque no llega a parsear bien.
-3. El archivo con el crud esta en /src/config/db.firebase.config.js
-4. La conexion esta en el src/app trate de llevarla como en mongo al db.firebase.config pero me salia un Warning.
-5. No te olvides de cuando uses el postman copiar las cid y los pid --> los que estan son a referencias.
+### Require tenel insada pm2 y forever con => npm i -g pm2 forever
+# Servidores en Node
+npm run dev
 
-## Mongo 
-1. Arranca con: "npm run mongo"
-2. corre con un mongo en maquina local   
-3. El archivo con el crud esta en /src/config/db.mongo.config.js
-4. La conexion esta en el app trate de lleve a /src/config/db.firebase.config.
-5. No te olvides de cuando uses el postman copiar las cid y los pid --> los que estan son a referencias.
+## modo cluster
+npm run dev-cluster
 
+## forever
+forever start index.js -w --modo=fork --puerto=8080
+forever list
 
-### Nota 
-1. La probe en linux y mac --> windows no uso por lo que te recomiendo si lo vas a revisar en window uses el WSL que trae por defecto(windows subsystem for linux)
-2. Cualquier cosa que quieras o tengas dudas o si queres hacer una llamada y que te muestre como ande me avisas.
+# pm2
+$ pm2 start index.js --name="Servidor1" --watch -- --puerto=8080
+$ pm2 start index.js --name="Servidor2" --watch -i max -- --puerto=8089
 
 
+## Servidor nginx
+instalar el nginx y remplazar con el archivo 
+
+ pm2 start index.js --name="ServidorCluster" --watch -- --puerto=8081 --modo=cluster
+ pm2 start index.js --name="ServidorSimple" --watch -- --puerto=8080
+
+
+## parte de la consigna:
+### desconenar nginx prueba 2 y comentar lo de la prueba 1

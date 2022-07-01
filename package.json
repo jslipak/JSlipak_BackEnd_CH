@@ -6,6 +6,7 @@
   "scripts": {
     "start": "export NODE_ENV=mongo && nodemon src/app.js",
     "dev": "export NODE_ENV=development && nodemon src/app.js",
+    "dev-cluster": "nodemon index.js --modo=cluster",
     "mongo": "export NODE_ENV=mongo && nodemon src/app.js",
     "firebase": "export NODE_ENV=firebase && nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
