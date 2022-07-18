@@ -5,13 +5,13 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
-const puerto = process.env.PORT || 8080;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const URL = 'mongodb://root:example@127.0.0.1:27017/ecommerce?authSource=admin';
 const flash = require('connect-flash');
-const { NODE_ENV } = process.env;
-
+const { config } = require('./config');
+const puerto = process.env.PORT || 8080;
+const log4js = require('./utils/loggers/log4js');
 mongoose
   .connect(URL, {
     useNewUrlParser: true,
@@ -57,10 +57,14 @@ const indexRouter = require('./routes/index.routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use('/', indexRouter);
 
 const server = app.listen(puerto, () => {
   console.log(`Servidor inicializado en el puerto ${server.address().port}`);
 });
 
-server.on('error', (_err) => console.log(`Error en servidor ${_err}`));
+server.on('error', (err) => {
+  log4js.errores('Error en el server');
+  console.log(`http://localhost:${port}`);
+});
