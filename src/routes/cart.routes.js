@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth.middleware');
-const { NODE_ENV } = process.env;
-const Cart = require(`../services/cart.${NODE_ENV}.services`);
+const Cart = require(`../services/cart.mongo.services`);
 
 router.get('/', auth, Cart.getAll);
 router.get('/:cid/products', auth, Cart.getProductCars);

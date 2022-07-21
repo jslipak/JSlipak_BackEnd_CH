@@ -14,8 +14,4 @@ router.use('/sessions', sessionRoutes);
 router.use('/auth', authRoutes);
 router.use('/', viewRoutes);
 
-//router.get('/', (req, res) => {
-//return res.send('api root v1');
-//});
-
 module.exports = router;

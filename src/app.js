@@ -1,3 +1,4 @@
+const config = require('./config');
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -5,12 +6,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
-const puerto = process.env.PORT || 8080;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const URL = 'mongodb://root:example@127.0.0.1:27017/ecommerce?authSource=admin';
+const URL = process.env.DB;
 const flash = require('connect-flash');
-const { NODE_ENV } = process.env;
+const puerto = process.env.PORT || 8080;
+console.log(config, process.env.PORT);
 
 mongoose
   .connect(URL, {

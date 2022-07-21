@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { NODE_ENV } = process.env;
-const { readFileSync } = require('fs');
-const Products = require(`../services/product.${NODE_ENV}.services`);
+const Products = require(`../services/product.mongo.services`);
 
 router.get('/', Products.getAll);
 router.post('/', Products.create);

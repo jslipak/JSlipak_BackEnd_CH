@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=mongo && nodemon src/app.js",
-    "dev": "export NODE_ENV=development && nodemon src/app.js",
-    "mongo": "export NODE_ENV=mongo && nodemon src/app.js",
-    "firebase": "export NODE_ENV=firebase && nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "src/app.js"
   },
   "author": "",
   "license": "ISC",

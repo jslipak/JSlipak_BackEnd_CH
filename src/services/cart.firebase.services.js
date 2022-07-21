@@ -1,5 +1,4 @@
-const { NODE_ENV } = process.env;
-const dbConfig = require(`../config/db.${NODE_ENV}.config`);
+const dbConfig = require(`../config/db.mongo.config`);
 
 class Cart {
   async getAll(req, res) {
