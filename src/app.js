@@ -24,8 +24,8 @@ mongoose
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl:
-        'mongodb://root:example@127.0.0.1:27017/sessions?authSource=admin',
+      mongoUrl:process.env.DB
+,
     }),
     secret:
       'Como te ven te tratan , si te ven mal te maltrata y si te ven bien te contrata',
