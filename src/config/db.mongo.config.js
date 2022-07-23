@@ -26,18 +26,28 @@ class CollectionCRUD {
   }
   // FIX: to bad id --> send message
   async getById(id) {
-    const _id = mongoose.mongo.ObjectId(id);
-    return this.model.findById(_id);
+    try {
+      const _id = mongoose.mongo.ObjectId(id);
+      return this.model.findById(_id);
+    } catch (err) {
+      return { err };
+    }
   }
   async deleteById(id) {
-    const _id = mongoose.mongo.ObjectId(id);
-    return this.model.findByIdAndDelete(_id);
+    try {
+      const _id = mongoose.mongo.ObjectId(id);
+      return this.model.findByIdAndDelete(_id);
+    } catch (err) {
+      return { err };
+    }
   }
   async updateById(id, value) {
-    const idMongo = mongoose.mongo.ObjectId(id);
-    console.log(value, idMongo);
-
-    return this.model.findByIdAndUpdate(idMongo, value);
+    try {
+      const idMongo = mongoose.mongo.ObjectId(id);
+      return this.model.findByIdAndUpdate(idMongo, value);
+    } catch (err) {
+      return { err };
+    }
   }
 }
 module.exports = CollectionCRUD;

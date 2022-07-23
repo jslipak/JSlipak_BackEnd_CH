@@ -10,14 +10,12 @@ class Cart {
 
   async getById(req, res) {
     const db = new dbConfig('carts');
-    console.log(req.params.cid);
     let obj = await db.getById(req.params.cid);
     res.json({ item: obj });
   }
 
   async getProductCars(req, res) {
     const db = new dbConfig('carts');
-    console.log(req.params.cid);
     const data = await db.getById(req.params.cid);
     res.json({ products: data.products });
   }
@@ -33,7 +31,6 @@ class Cart {
 
   async deleteById(req, res) {
     const db = new dbConfig('carts');
-    console.log(req.params.cid);
     const obj = await db.deleteById(req.params.cid);
     res.json({ item: obj });
   }
@@ -51,8 +48,8 @@ class Cart {
       const dbP = new dbConfig('products');
       const dbC = new dbConfig('carts');
       console.log(req.params);
-      let pid = await mongoose.mongo.ObjectId(req.params.pid);
-      let cid = await mongoose.mongo.ObjectId(req.params.cid);
+      let pid = req.params.pid;
+      let cid = req.params.cid;
       const product = await dbP.getById(pid);
       const cart = await dbC.getById(cid);
       if (product.stock > 0) {
@@ -82,7 +79,7 @@ class Cart {
     try {
       console.log(req.params);
       const dbC = new dbConfig('carts');
-      let cid = await mongoose.mongo.ObjectId(req.params.cid);
+      let cid = req.params.cid;
       const cart = await dbC.getById(cid);
       const indexProduct = cart.products.findIndex(
         (e) => String(e.pid) === req.params.pid,
