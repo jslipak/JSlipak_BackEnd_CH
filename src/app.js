@@ -11,7 +11,6 @@ const mongoose = require('mongoose');
 const URL = process.env.DB;
 const flash = require('connect-flash');
 const puerto = process.env.PORT || 8080;
-console.log(config, process.env.PORT);
 
 mongoose
   .connect(URL, {
@@ -24,8 +23,7 @@ mongoose
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl:process.env.DB
-,
+      mongoUrl: process.env.DB,
     }),
     secret:
       'Como te ven te tratan , si te ven mal te maltrata y si te ven bien te contrata',
