@@ -1,5 +1,6 @@
 const dbConfig = require('../config/db.mongo.config');
 const mongoose = require('mongoose');
+const sendSMS = require('../utils/twilioSms');
 
 class Cart {
   async getAll(req, res) {
@@ -21,12 +22,19 @@ class Cart {
   }
 
   async create(req, res) {
-    const db = new dbConfig('carts');
-    const newCart = {
-      products: [],
-    };
-    const newData = await db.create(newCart);
-    res.json({ item: newData });
+    try {
+      const db = new dbConfig('carts');
+      const newCart = {
+        products: [],
+      };
+      const newData = await db.create(newCart);
+      // date format day month year and time
+      //
+      sendSMS(`new Cart was created at ${Date.now().toString()}`);
+      res.json({ item: newData });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async deleteById(req, res) {
