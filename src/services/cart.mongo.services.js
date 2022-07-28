@@ -1,6 +1,7 @@
 const dbConfig = require('../config/db.mongo.config');
 const mongoose = require('mongoose');
-const sendSMS = require('../utils/twilioSms');
+const send = require('../utils/twilio.utils');
+const sendMail = require('../utils/nodemailer.utils');
 
 class Cart {
   async getAll(req, res) {
@@ -30,8 +31,12 @@ class Cart {
       const newData = await db.create(newCart);
       // date format day month year and time
       //
-      sendSMS(`new Cart was created at ${Date.now().toString()}`);
+      send(`new Cart was created at ${Date.now().toString()} `, true);
       res.json({ item: newData });
+      sendMail(
+        config.emailTo,
+        `<h1>new Cart was created at ${Date.now().toString()}</h1> `,
+      );
     } catch (err) {
       console.log(err);
     }

@@ -4,13 +4,13 @@ console.log(config);
 const accountSid = config.twilioSid;
 const authToken = config.twilioToken;
 
-const sendSMS = async (msg) => {
+const send = async (msg, whatsapp = false) => {
   const client = twilio(accountSid, authToken);
   try {
     const message = await client.messages.create({
       body: msg,
-      from: config.twilioPhone,
-      to: config.whatsapp,
+      from: whatsapp ? `whatsapp:${config.twilioTo}` : config.twilioPhone,
+      to: whatsapp ? `whatsapp:${config.whatsapp}` : config.whatsapp,
     });
     console.log(message);
   } catch (err) {
@@ -18,4 +18,4 @@ const sendSMS = async (msg) => {
   }
 };
 
-module.exports = sendSMS;
+module.exports = send;
