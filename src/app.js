@@ -11,13 +11,14 @@ const mongoose = require('mongoose');
 const URL = process.env.DB;
 const flash = require('connect-flash');
 const puerto = process.env.PORT || 8080;
+const logger = require('./utils/logger.utils');
 
 mongoose
   .connect(URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((data) => console.log('se ha conectado con mongo'))
+  .then((data) => console.log('mongo connected'))
   .catch((err) => console.log(err));
 
 app.use(
@@ -62,4 +63,4 @@ const server = app.listen(puerto, () => {
   console.log(`Servidor inicializado en el puerto ${server.address().port}`);
 });
 
-server.on('error', (_err) => console.log(`Error en servidor ${_err}`));
+server.on('error', (_err) => logger.fatal(err));

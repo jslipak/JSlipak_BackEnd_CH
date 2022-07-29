@@ -4,6 +4,7 @@ const passport = require('passport');
 const User = require('../models/user.mongo.models');
 const mailer = require('../utils/nodemailer.utils');
 const upload = require('../middleware/multer.middleware');
+const logger = require('../utils/logger.utils');
 const fs = require('fs');
 router.get('/login', function (req, res) {
   res.render('pages/login');
@@ -23,8 +24,7 @@ router.get('/logout', function (req, res, next) {
 });
 
 router.post('/signup', upload.single('avatar'), function (req, res, next) {
-  console.log(req.file);
-  console.log('registering user');
+  logger.info(`new user:${req.body.username} at ${Date.now()}`);
   try {
     User.register(
       new User({
