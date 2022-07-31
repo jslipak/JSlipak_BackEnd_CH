@@ -1,0 +1,7 @@
+{"username" : "test@test.com",
+        "fullName" : "Jona Leo",
+        "address" : "caoe oeuaoeu 432",
+        "birthday" : "26/04/2000",
+        "phone" : "+541134104142",
+        "avatar" : "./src/my-uploads/${req.body.username}.jpg",
+      }

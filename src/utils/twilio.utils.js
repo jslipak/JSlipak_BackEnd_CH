@@ -2,7 +2,7 @@ const twilio = require('twilio');
 const config = require('../config');
 const accountSid = config.twilioSid;
 const authToken = config.twilioToken;
-
+console.log(config);
 const send = async (msg, whatsapp = false) => {
   const client = twilio(accountSid, authToken);
   try {
@@ -13,8 +13,10 @@ const send = async (msg, whatsapp = false) => {
     });
     console.log(message);
   } catch (err) {
+    console.log('hube error');
     console.log(err);
   }
 };
 
+//send('hola estoy probando ', true);
 module.exports = send;

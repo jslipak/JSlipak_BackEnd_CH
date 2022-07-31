@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
-const User = require('../models/user.mongo.models');
-const mailer = require('../utils/nodemailer.utils');
+const user = require('../services/user.services');
 const upload = require('../middleware/multer.middleware');
-const logger = require('../utils/logger.utils');
-const fs = require('fs');
+const passport = require('passport');
+
 router.get('/login', function (req, res) {
   res.render('pages/login');
 });
@@ -23,43 +21,7 @@ router.get('/logout', function (req, res, next) {
   });
 });
 
-router.post('/signup', upload.single('avatar'), function (req, res, next) {
-  logger.info(`new user:${req.body.username} at ${Date.now()}`);
-  try {
-    User.register(
-      new User({
-        username: req.body.username,
-        fullName: req.body.fullname,
-        address: req.body.address,
-        birthday: req.body.birthday,
-        phone: req.body.phone,
-        avatar: `./src/my-uploads/${req.body.username}.jpg`,
-      }),
-      req.body.password,
-      function (err) {
-        if (err) {
-          console.log('error while user register!', err);
-          return next(err);
-        }
-        mailer(
-          'new user created',
-          `<p>new user created: ${req.body.username} , ${req.body.fullname}, ${req.body.phone}</p>`,
-        );
-        console.log(req);
-        // copy from file buffer to jpg file
-        fs.writeFileSync(
-          `./src/my-uploads/${req.body.username}_avatar.jpg`,
-          req.file.buffer,
-        );
-        console.log('user registered!');
-        res.redirect('/');
-      },
-    );
-  } catch (err) {
-    // TODO: handle error
-    console.log(err);
-  }
-});
+router.post('/signup', upload.single('avatar'), user.create);
 
 router.post(
   '/login',
