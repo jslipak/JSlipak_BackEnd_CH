@@ -1,22 +1,16 @@
-# second review
+# third review
 
-## Firebase 
-1. Arranca con: "npm run firebase"
-2. El json con el certificado tiene que estar una carpeta por de tras de clone para no esponer la credencial --> no se pudo hacer con dotenv porque no llega a parsear bien.
-3. El archivo con el crud esta en /src/config/db.firebase.config.js
-4. La conexion esta en el src/app trate de llevarla como en mongo al db.firebase.config pero me salia un Warning.
-5. No te olvides de cuando uses el postman copiar las cid y los pid --> los que estan son a referencias.
+## Registro 
+- esta hecho con passport y local mongoose . la base de dato esta en el .env
+- tenes una versien deplegada en heroku y una ruta /users donde te va traer todos los usuarios
+- alguna de las  ruta tenes que estar logeado , te deje un archivo de postman para que te sea mas facil
+- tenes que crear un enviroment con un variabla url para que ande 
+- tenes 3 utils uno para twilio , maildemon y los loggers 
+- respecto del mail esta hecho con el sandbox de etheriun mail
+- respecoto de whatsapp tambien en sandbox de twilio
+- Multer esta como middleware
 
-## Mongo 
-1. Arranca con: "npm run mongo"
-2. corre con un mongo en maquina local   
-3. El archivo con el crud esta en /src/config/db.mongo.config.js
-4. La conexion esta en el app trate de lleve a /src/config/db.firebase.config.
-5. No te olvides de cuando uses el postman copiar las cid y los pid --> los que estan son a referencias.
-
-
-### Nota 
-1. La probe en linux y mac --> windows no uso por lo que te recomiendo si lo vas a revisar en window uses el WSL que trae por defecto(windows subsystem for linux)
-2. Cualquier cosa que quieras o tengas dudas o si queres hacer una llamada y que te muestre como ande me avisas.
-
+## te voy a adjuntar .env mio pero no te va servir de mucho , salvo para la base de mongo atlas.
+## cualquier cosa escribime , y te lo muestro andando --> hay cosas de los entregable que no se puede hacer bien sin tener el servicio, ejemplo [twilio](twilio)
+## me llevo un monton de tiempo y todavia hac cosas por mejorar , pero quiero seguir avanzando con los otros entregable.
 
