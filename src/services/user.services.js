@@ -1,4 +1,4 @@
-const UserModel = require('../models/user.mongo.models');
+const UserModel = require('../models/user.models');
 const mailer = require('../utils/nodemailer.utils');
 const logger = require('../utils/logger.utils');
 const { mongo } = require('mongoose');
@@ -62,7 +62,6 @@ class User {
   }
   async findById(req, res, next) {
     try {
-      console.log(req.params.uid);
       const idMongo = mongo.ObjectId.isValid(req.params.uid)
         ? req.params.uid
         : ObjectId(req.params.uid);

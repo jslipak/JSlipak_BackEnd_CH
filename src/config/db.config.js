@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-const products = require('../models/product.mongo.models');
-const carts = require('../models/cart.mongo.models');
+const products = require('../models/product.models');
+const carts = require('../models/cart.models');
+const users = require('../models/user.models');
+
+// TODO: refactoring  Crud , I don't know if a need these class
 
 class CollectionCRUD {
   constructor(doc) {
@@ -9,7 +12,7 @@ class CollectionCRUD {
   }
 
   _model(model) {
-    const models = { products: products, carts: carts };
+    const models = { products: products, carts: carts, users: users };
     return (this.model = models[model]);
   }
 

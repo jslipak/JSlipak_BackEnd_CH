@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth.middleware');
-const Cart = require(`../services/cart.mongo.services`);
+const Cart = require(`../services/cart.services`);
 
 router.get('/', auth, Cart.getAll);
 router.get('/:cid/products', auth, Cart.getProductCars);

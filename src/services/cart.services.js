@@ -1,4 +1,4 @@
-const dbConfig = require('../config/db.mongo.config');
+const dbConfig = require('../config/db.config');
 const mongoose = require('mongoose');
 const send = require('../utils/twilio.utils');
 const sendMail = require('../utils/nodemailer.utils');

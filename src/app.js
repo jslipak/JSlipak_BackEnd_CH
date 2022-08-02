@@ -19,7 +19,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((data) => console.log('mongo connected'))
-  .catch((err) => console.log(err));
+  .catch((err) => logger.error(err));
 
 app.use(
   session({
@@ -43,7 +43,7 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-const User = require('./models/user.mongo.models');
+const User = require('./models/user.models');
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

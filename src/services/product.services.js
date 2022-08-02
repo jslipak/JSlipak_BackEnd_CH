@@ -1,4 +1,4 @@
-const dbConfig = require(`../config/db.mongo.config`);
+const dbConfig = require(`../config/db.config`);
 
 class Product {
   async getAll(req, res) {
@@ -36,7 +36,6 @@ class Product {
     const db = new dbConfig('products');
     let obj = {
       title: req.body.title,
-      description: req.body.description,
       code: req.body.code,
       thumbnail: req.body.thumbnail,
       price: req.body.price,
