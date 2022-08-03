@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
 const cartCollection = 'Cart';
 
+// TODO: create a relations with User model
 const ProductSchema = new mongoose.Schema({
   pid: { type: 'ObjectId', ref: 'Product' },
   quantity: { type: 'Number', required: true },

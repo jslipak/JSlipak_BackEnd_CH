@@ -15,8 +15,9 @@ class User {
   }
 
   async create(req, res, next) {
-    logger.info(`new user:${req.body.username} at ${Date.now()}`);
     try {
+      console.log(req);
+      logger.info(`new user:${req.body.username} at ${Date.now()}`);
       UserModel.register(
         new UserModel({
           username: req.body.username,
@@ -24,7 +25,7 @@ class User {
           address: req.body.address,
           birthday: req.body.birthday,
           phone: req.body.phone,
-          avatar: `./src/my-uploads/${req.body.username}.jpg`,
+          avatar: `./src/my-uploads/${req.body.username}_avatar.jpg`,
         }),
         req.body.password,
         function (err) {
