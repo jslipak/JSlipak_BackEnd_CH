@@ -31,7 +31,9 @@ class User {
           address: req.body.address,
           birthday: req.body.birthday,
           phone: req.body.phone,
-          avatar: `./src/my-uploads/${req.body.username}_avatar.jpg`,
+          avatar: req.file
+            ? `./src/my-uploads/${req.body.username}_avatar.jpg`
+            : `no photo`,
         }),
         req.body.password,
         function (err) {
