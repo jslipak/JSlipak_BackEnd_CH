@@ -16,8 +16,14 @@ class User {
 
   async create(req, res, next) {
     try {
-      console.log(req);
       logger.info(`new user:${req.body.username} at ${Date.now()}`);
+      if (res.file !== undefined) {
+        fs.writeFileSync(
+          `./src/my-uploads/${req.body.username}_avatar.jpg`,
+          req.file.buffer,
+        );
+      }
+
       UserModel.register(
         new UserModel({
           username: req.body.username,
@@ -36,10 +42,6 @@ class User {
           mailer(
             'new user created',
             `<p>new user created: ${req.body.username} , ${req.body.fullname}, ${req.body.phone}</p>`,
-          );
-          fs.writeFileSync(
-            `./src/my-uploads/${req.body.username}_avatar.jpg`,
-            req.file.buffer,
           );
           res.redirect('/');
         },
@@ -74,11 +76,25 @@ class User {
   }
 
   // TODO: make a password change  and password
+  async updateByIdPassword(req, res, next) {
+    try {
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  //TODO:make a check in postman
   async updateById(req, res, next) {
     try {
       const idMongo = mongo.ObjectId.isValid(req.params.uid)
         ? req.params.uid
         : ObjectId(req.params.uid);
+      req.body.avatar = `./src/my-uploads/${req.body.username}_avatar.jpg`;
+      fs.writeFileSync(
+        `./src/my-uploads/${req.body.username}_avatar.jpg`,
+        req.file.buffer,
+      );
+
       const updateUser = user.findByIdAndUpdate(idMongo, req.body);
       res.json(updateUser);
     } catch (err) {

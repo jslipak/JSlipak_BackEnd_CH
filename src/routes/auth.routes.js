@@ -21,6 +21,7 @@ router.get('/logout', function (req, res, next) {
   });
 });
 
+// FIX: when upload it's empty
 router.post('/signup', upload.single('avatar'), user.create);
 
 router.post(
