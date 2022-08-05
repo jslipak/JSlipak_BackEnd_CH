@@ -3,7 +3,6 @@ const router = express.Router();
 const user = require('../services/user.services');
 const upload = require('../middleware/multer.middleware');
 
-// TODO: password change  user
 router.get('/', user.getAll);
 router.delete('/:uid', user.deleteById);
 router.get('/:uid', user.findById);

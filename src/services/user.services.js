@@ -77,27 +77,43 @@ class User {
     }
   }
 
-  // TODO: make a password change  and password
   async updateByIdPassword(req, res, next) {
     try {
+      console.log(req.body);
+      const idMongo = mongo.ObjectId.isValid(req.params.uid)
+        ? req.params.uid
+        : ObjectId(req.params.uid);
+      const idUser = await UserModel.findById(idMongo);
+      try {
+        await idUser.changePassword(req.body.oldPassword, req.body.newPassword);
+        return res.json({ msg: 'successful' });
+      } catch (err) {
+        return res.json({ msg: err });
+      }
     } catch (err) {
       next(err);
     }
   }
 
-  //TODO:make a check in postman
   async updateById(req, res, next) {
     try {
       const idMongo = mongo.ObjectId.isValid(req.params.uid)
         ? req.params.uid
         : ObjectId(req.params.uid);
-      req.body.avatar = `./src/my-uploads/${req.body.username}_avatar.jpg`;
-      fs.writeFileSync(
-        `./src/my-uploads/${req.body.username}_avatar.jpg`,
-        req.file.buffer,
-      );
+      const idUser = await UserModel.findById(idMongo);
+      console.log(idUser);
+      if (req.file) {
+        req.body.avatar = `./src/my-uploads/${idUser.username}_avatar.jpg`;
+        fs.writeFileSync(
+          `./src/my-uploads/${idUser.username}_avatar.jpg`,
+          req.file.buffer,
+        );
+      } else {
+        console.log(idUser);
+        req.body.avatar = idUser.avatar;
+      }
 
-      const updateUser = user.findByIdAndUpdate(idMongo, req.body);
+      const updateUser = await UserModel.findByIdAndUpdate(idMongo, req.body);
       res.json(updateUser);
     } catch (err) {
       next(err);

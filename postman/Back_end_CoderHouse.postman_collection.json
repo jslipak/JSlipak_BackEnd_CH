@@ -392,7 +392,7 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "seriedigital@gmail.com",
+									"value": "eeeeueuaoeuaqk@gmail.com.ar",
 									"type": "text"
 								},
 								{
@@ -614,6 +614,89 @@
 							"path": [
 								"users",
 								"62e5a69f7f831a8067e651da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/jona/Desktop/athletic-couple-playing-squash-together (1).jpg"
+								},
+								{
+									"key": "birthday",
+									"value": "2015-01-03",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+541134104127",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "martin Slipak",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tu vieja",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "no modifica",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/62ecd6624220d9a722232dec/edit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"62ecd6624220d9a722232dec",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oldPassword\":\"eeeeee\",\"newPassword\":\"xxxxxx\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/62ece1f322a2c7f373009c99/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"62ece1f322a2c7f373009c99",
+								"password"
 							]
 						}
 					},
