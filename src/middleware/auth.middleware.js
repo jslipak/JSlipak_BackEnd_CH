@@ -1,12 +1,17 @@
+//const auth = function (req, res, next) {
+//if (req.isAuthenticated()) {
+//console.log('auth successful');
+//return next();
+//} else {
+//console.log('auth failed');
+//return res.status(401).redirect('/');
+//}
+//};
 const auth = function (req, res, next) {
-  if (true) {
-    console.log('auth successful');
+  if (req.isAuthenticated()) {
     return next();
   } else {
-    console.log('auth failed');
-    return res.status(401).json({
-      message: 'Auth failed',
-    });
+    res.status(401).redirect('/');
   }
 };
 

@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "fc8d4ced-608a-4f38-9dc9-b33104080fb5",
+		"name": "Back_end_CoderHouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1635878"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Show Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"title\": \"Tu Vieja no se borra nunca\",\n    \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n    \"description\": \"hola mundo\",\n    \"thumbnail\": \"http://placehold.it/32x32\",\n    \"price\": 3.014,\n    \"stock\": 55\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/products/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/products/62db3049b4c81440321b1f17",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"62db3049b4c81440321b1f17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one Product by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/products/62db3049b4c81440321b1f17",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"62db3049b4c81440321b1f17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"title\": \"update.3teste\",\n            \"description\":\"euaoeuaoetuhoeunsat;e'm\",\n            \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n            \"thumbnail\": \"http://placehold.it/32x32\",\n            \"price\": 3.014,\n            \"stock\": 156,\n            \"timestamp\": \"2022-05-15T16:04:36.421Z\",\n            \"__v\": 0\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/products/62db3049b4c81440321b1f17",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"62db3049b4c81440321b1f17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "show all Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/carts/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Cart by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/carts/62db8493ccd853b8bed284c9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								"62db8493ccd853b8bed284c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Producs in CID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/carts/62db8493ccd853b8bed284c9/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								"62db8493ccd853b8bed284c9",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create orden",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/carts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add product Into CID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/carts/62e18b1fbb939ca5b0806931/products/62e99a6e62e7191cc5b45db4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								"62e18b1fbb939ca5b0806931",
+								"products",
+								"62e99a6e62e7191cc5b45db4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ono Order by Cid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\":\"admin\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/carts/62e18cb3c9f8cb48ca968c1c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								"62e18cb3c9f8cb48ca968c1c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove product Into CID  by PId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"pid\": 74,\n        \"quantity\": 4\n}\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/carts/62e18b1fbb939ca5b0806931/products/62e99a6e62e7191cc5b45db4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								"62e18b1fbb939ca5b0806931",
+								"products",
+								"62e99a6e62e7191cc5b45db4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sessions/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sessions",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"seriedigital@gmail.com\", \"password\":\"xxxawq\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "eeeeueuaoeuaqk@gmail.com.ar",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "xxxawq",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/jona/Desktop/athletic-couple-playing-squash-together (1).jpg"
+								},
+								{
+									"key": "birthday",
+									"value": "2015-01-03",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+541134104142",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "jona Slipak",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tu vieja",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/auth/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "seriedigital@gmail.com.ar",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "xxxawq",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/jona/Desktop/athletic-couple-playing-squash-together (1).jpg"
+								},
+								{
+									"key": "birthday",
+									"value": "2015-01-03",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+541134104142",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "jona Slipak",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tu vieja",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show User by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "seriedigital@gmail.com.ar",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "xxxawq",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/jona/Desktop/athletic-couple-playing-squash-together (1).jpg"
+								},
+								{
+									"key": "birthday",
+									"value": "2015-01-03",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+541134104142",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "jona Slipak",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tu vieja",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/62e5a69f7f831a8067e651da",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"62e5a69f7f831a8067e651da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete User by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "seriedigital@gmail.com.ar",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "xxxawq",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/jona/Desktop/athletic-couple-playing-squash-together (1).jpg"
+								},
+								{
+									"key": "birthday",
+									"value": "2015-01-03",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+541134104142",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "jona Slipak",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tu vieja",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/62e5a69f7f831a8067e651da",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"62e5a69f7f831a8067e651da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/jona/Desktop/athletic-couple-playing-squash-together (1).jpg"
+								},
+								{
+									"key": "birthday",
+									"value": "2015-01-03",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+541134104127",
+									"type": "text"
+								},
+								{
+									"key": "fullname",
+									"value": "martin Slipak",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tu vieja",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "no modifica",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/62ecd6624220d9a722232dec/edit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"62ecd6624220d9a722232dec",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oldPassword\":\"eeeeee\",\"newPassword\":\"xxxxxx\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/62ece1f322a2c7f373009c99/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"62ece1f322a2c7f373009c99",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
