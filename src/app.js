@@ -63,4 +63,4 @@ const server = app.listen(puerto, () => {
   console.log(`Servidor inicializado en el puerto ${server.address().port}`);
 });
 
-server.on('error', (_err) => logger.fatal(err));
+server.on('error', (err) => logger.fatal(err));
