@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const passportLocalMongoose = require('passport-local-mongoose');
 
 const validateEmail = function (email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -25,7 +24,8 @@ const User = new Schema({
   birthday: { type: Date, require: true, default: Date.now },
   phone: { type: String, require: true, default: 'No phone' },
   avatar: { type: String, require: true, default: 'No avatar' },
+  hash: { type: String, require: true },
+  salt: { type: String, require: true },
 });
 
-User.plugin(passportLocalMongoose);
 module.exports = mongoose.model('User', User);

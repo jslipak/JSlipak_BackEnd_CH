@@ -3,6 +3,7 @@ const mailer = require('../utils/nodemailer.utils');
 const logger = require('../utils/logger.utils');
 const { mongo } = require('mongoose');
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 
 class User {
   async getAll(req, res, next) {
@@ -14,46 +15,52 @@ class User {
     }
   }
 
+  async getUserByEmail(email) {
+    try {
+      const user = await UserModel.findOne({ username: email });
+      return user;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  // TODO: password not encrypted in database
   async create(req, res, next) {
+    // bcrypt password
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
     try {
       logger.info(`new user:${req.body.username} at ${Date.now()}`);
-      if (res.file !== undefined) {
+      const newUser = new UserModel({
+        username: req.body.username,
+        salt: salt,
+        hash: hash,
+        fullName: req.body.fullname,
+        address: req.body.address,
+        birthday: req.body.birthday,
+        phone: req.body.phone,
+        avatar: req.file
+          ? `./src/my-uploads/${req.body.username}_avatar.jpg`
+          : `no photo`,
+      });
+      const user = await newUser.save();
+      if (req.file !== undefined) {
         fs.writeFileSync(
           `./src/my-uploads/${req.body.username}_avatar.jpg`,
           req.file.buffer,
         );
       }
-
-      UserModel.register(
-        new UserModel({
-          username: req.body.username,
-          fullName: req.body.fullname,
-          address: req.body.address,
-          birthday: req.body.birthday,
-          phone: req.body.phone,
-          avatar: req.file
-            ? `./src/my-uploads/${req.body.username}_avatar.jpg`
-            : `no photo`,
-        }),
-        req.body.password,
-        function (err) {
-          if (err) {
-            logger.error(err);
-            return next(err);
-          }
-          mailer(
-            'new user created',
-            `<p>new user created: ${req.body.username} , ${req.body.fullname}, ${req.body.phone}</p>`,
-          );
-          res.redirect('/');
-        },
+      mailer(
+        'new user created',
+        `<p>new user created: ${req.body.username} , ${req.body.fullname}, ${req.body.phone}</p>`,
       );
+      res.redirect('/');
     } catch (err) {
       logger.error(err);
-      res.send('erros send ');
+      res.send(`Error: ${err}`);
     }
   }
-
+  e;
   async deleteById(req, res, next) {
     try {
       const idMongo = mongo.ObjectId.isValid(req.params.uid)
