@@ -1,0 +1,7 @@
+// .prettierrc file
+
+{
+  // this will be the maximum print width for all files 
+  // for max line length
+  "printWidth": 70
+}

@@ -22,39 +22,16 @@ mongoose
   .then((data) => console.log('mongo connected'))
   .catch((err) => logger.error(err));
 
-//app.use(
-//session({
-//store: MongoStore.create({
-//mongoUrl: process.env.DB,
-//}),
-//secret:
-//'Como te ven te tratan , si te ven mal te maltrata y si te ven bien te contrata',
-//resave: false,
-//saveUninitialized: false,
-//cookie: { maxAge: 600000 },
-//rolling: true,
-//}),
-//);
 app.use(
   cookieParser(
     'Como te ven te tratan , si te ven mal te maltrata y si te ven bien te contrata',
   ),
 );
 app.use(flash());
-
-//app.use(passport.initialize());
-//app.use(passport.session());
-//const User = require('./models/user.models');
-//passport.use(new LocalStrategy(User.authenticate()));
-//passport.serializeUser(User.serializeUser());
-//passport.deserializeUser(User.deserializeUser());
-
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
-
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
@@ -63,4 +40,4 @@ const server = app.listen(puerto, () => {
   console.log(`Servidor inicializado en el puerto ${server.address().port}`);
 });
 
-server.on('error', (_err) => logger.fatal(err));
+server.on('error', (err) => logger.fatal(err));
