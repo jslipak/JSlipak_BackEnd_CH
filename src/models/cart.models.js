@@ -9,6 +9,7 @@ const ProductSchema = new mongoose.Schema({
 
 const CartSchema = new mongoose.Schema({
   timestamp: { type: 'Date', default: Date.now },
+  user: { type: 'ObjectId', ref: 'User' },
   products: [ProductSchema],
 });
 

@@ -24,9 +24,7 @@ class User {
     }
   }
 
-  // TODO: password not encrypted in database
   async create(req, res, next) {
-    // bcrypt password
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(req.body.password, salt);
     try {

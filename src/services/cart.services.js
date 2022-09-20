@@ -29,6 +29,7 @@ class Cart {
   async create(req, res, next) {
     try {
       const newCart = {
+        user: req.user.userId,
         products: [],
       };
       const newData = await carts.create(newCart);

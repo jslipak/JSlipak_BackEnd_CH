@@ -15,6 +15,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/home', auth.verifyToken, (req, res) => {
+  console.log(req.user);
   res.render('pages/home', { name: req.user.username, msg: false });
 });
 
