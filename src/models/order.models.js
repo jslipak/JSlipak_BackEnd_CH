@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const ordenCollection = 'Orden';
+const orderCollection = 'Order';
 
 const ProductSchema = new mongoose.Schema({
   pid: { type: 'ObjectId', ref: 'Product' },
   quantity: { type: 'Number', required: true },
 });
 
-const OrdenSchema = new mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
   timestamp: { type: 'Date', default: Date.now },
   status: { type: 'String',enum:['processing', 'cancel', 'delay', 'completed'],default:'processing', required: true },
   user: { type: 'ObjectId', ref: 'User' },
@@ -14,4 +14,4 @@ const OrdenSchema = new mongoose.Schema({
   items: [ProductSchema]
 });
 
-module.exports = mongoose.model(ordenCollection, OrdenSchema); 
+module.exports = mongoose.model(orderCollection, OrderSchema); 

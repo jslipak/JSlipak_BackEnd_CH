@@ -5,7 +5,6 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
-//const MongoStore = require('connect-mongo');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const URL = process.env.DB;
