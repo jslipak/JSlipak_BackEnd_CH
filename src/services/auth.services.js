@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const user = require('../services/user.services');
+const config = require('../config');
 
 class Auth {
   constructor() {
-    this.secret = 'secret';
+    this.secret = config.jwtSecret;
   }
   async login(req, res) {
     try {
@@ -16,7 +17,7 @@ class Auth {
       if (!isSamePassword) return res.status(401).send('Wrong password');
       const token = jwt.sign(
         { userId: existingUser.id, username: existingUser.username },
-        'secretkeyappearshere',
+        this.secret,
         { expiresIn: '1h' },
       );
       res.cookie('token', token, { httpOnly: true }).redirect('/home');
@@ -30,7 +31,7 @@ class Auth {
   verifyToken(req, res, next) {
     try {
         const token = req.cookies.token;
-        const decoded = jwt.verify(token, 'secretkeyappearshere');
+        const decoded = jwt.verify(token, confi.jwtSecret);
         req.user = decoded;
         next();
       } catch (err) {

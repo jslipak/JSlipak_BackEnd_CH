@@ -1,6 +1,6 @@
 const { orders } = require('../models/order.models');
 
-
+// ASK: why is the Business Logic to changeStatusById 
 class Order {
   async getAll(req, res) {
     const data = await orders.find();

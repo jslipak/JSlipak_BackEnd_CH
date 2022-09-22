@@ -22,9 +22,7 @@ mongoose
   .catch((err) => logger.error(err));
 
 app.use(
-  cookieParser(
-    'Como te ven te tratan , si te ven mal te maltrata y si te ven bien te contrata',
-  ),
+  cookieParser( config.cookieSecret),
 );
 app.use(flash());
 app.set('view engine', 'ejs');

@@ -13,6 +13,8 @@ const config = {
   twilioToken: process.env.TWILIO_TOKEN,
   twilioPhone: process.env.TWILIO_PHONE,
   twilioTo: process.env.TWILIO_WHATSAPP,
+  jwtSecret: process.env.JWT_SECRET,
+  cookieSecret: process.env.COOKIE_SECRET,
 };
 
 module.exports = config;
