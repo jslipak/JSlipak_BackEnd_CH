@@ -1,4 +1,4 @@
-const { orders } = require('../models/order.models');
+const  orders  = require('../models/order.models');
 
 // ASK: why is the Business Logic to changeStatusById 
 class Order {
@@ -7,10 +7,11 @@ class Order {
     res.json({ items: data });
   }
   async create(req, res) {
+    console.log(req.body)
     const newOrder = {
       user: req.user.userId,
       email: req.user.username,
-      items: req.body.items}
+      items: req.body.products}
 
     const newData = await orders.create(newOrder);
     res.json({ item: newData });
