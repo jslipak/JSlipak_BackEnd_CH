@@ -34,7 +34,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": " {\n    \"title\": \"Tu Vieja no se borra nunca\",\n    \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n    \"description\": \"hola mundo\",\n    \"thumbnail\": \"http://placehold.it/32x32\",\n    \"price\": 3.014,\n    \"stock\": 55\n  }",
+							"raw": " {\n    \"title\": \"Milka Chico con almendras\",\n    \"category\": \"candy\",\n    \"code\": \"92637a33-7e5b-4d27-991c-61348793e639\",\n    \"description\": \"Chocalte Milka rico rico\",\n    \"thumbnail\": \"http://placehold.it/32x32\",\n    \"price\": 215,\n    \"stock\": 55\n  } ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -129,6 +129,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Show Products by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/products/category/candy",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"category",
+								"candy"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -136,7 +156,7 @@
 			"name": "Cart",
 			"item": [
 				{
-					"name": "show all Orders",
+					"name": "show all Carts",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -201,7 +221,7 @@
 					"response": []
 				},
 				{
-					"name": "Create orden",
+					"name": "Create Cart",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -338,12 +358,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/sessions/logout",
+							"raw": "{{URL}}/auth/logout",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"sessions",
+								"auth",
 								"logout"
 							]
 						}
@@ -357,7 +377,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\": \"seriedigital@gmail.com\", \"password\":\"xxxawq\"}",
+							"raw": "{\"username\": \"eeeeueuaoeuaqk@gmail.com.ar\", \"password\":\"xxxawq\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -697,6 +717,105 @@
 								"users",
 								"62ece1f322a2c7f373009c99",
 								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/orders/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\": [\n        {\n            \"pid\": \"62e99a6e62e7191cc5b45db4\",\n            \"quantity\": 5,\n            \"_id\": \"62ea1d9e871198c76e9b2479\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/orders/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get  Order by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/orders/63336180d84abad83ce53459",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"63336180d84abad83ce53459"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change status Order by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/orders/63336180d84abad83ce53459",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"63336180d84abad83ce53459"
 							]
 						}
 					},
