@@ -15,6 +15,8 @@
                 <h2><%= msg %></h2>
          <% } %>
         <h1>Bienvenido <%- name %></h1>
+        <h2>Orders</h2>
+        <%- include('../partials/table', {orders})%>
     </div>
 </body>
 

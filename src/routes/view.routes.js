@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../services/auth.services');
-
+const orders = require('../services/order.services');
 router.get('/', (req, res) => {
   req.user?.username
     ? res.render('pages/home', {
@@ -14,9 +14,9 @@ router.get('/signup', (req, res) => {
   res.render('pages/signup');
 });
 
-router.get('/home', auth.verifyToken, (req, res) => {
-  console.log(req.user);
-  res.render('pages/home', { name: req.user.username, msg: false });
+router.get('/home', auth.verifyToken, async(req, res) => {
+  const userOrders = await orders.viewAllByUser(req.user.userId);
+  res.render('pages/home', { name: req.user.username, msg: false, orders: userOrders });
 });
 
 router.get('/error', (req, res) => {

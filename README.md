@@ -47,7 +47,7 @@ COOKIE_SECRET= // el secreto para la implementacion de cookies
   - Inicio de sesion a traves de la API (Ejemplo en postman)
   - Creacion de User a traves del localhost en su pantalla de inicio desde el browser
   - Creacion de User a traves de la API (Ejemplo en postman)
-  - Eliminacion de usuarios dedsde la api 
+  - Eliminacion de usuarios dedsde la api
 - Áuth
   - Cuenta con un Login tanto en web como desde la api
   - Cuenta con un logout tanto desde la web como en la api
@@ -67,5 +67,11 @@ COOKIE_SECRET= // el secreto para la implementacion de cookies
   - se pueden agregar productos al carrito a traves de su id (ejemplo en postman)
   - se pueden eliminar productos del carrito a traves de su id (ejemplo en postman)
   - se pueden ver todos los productos que hay en un carrito (ejemplo en postman)
-- Order(only api)
+- Order
   - se pueden ver todos los pedidos desde la api a traves de un get (ejemplo en postman)
+  - Se pueden ver todos los pedidos de un usuario a traves del id del usuaria (ejemplo en postman)
+  - se pueden cambiar los status de una orden a traves de su id este es capturado del jwt(ejemplo en postman)
+  - no se puede borrar ningina orden ,por temas de seguridad y seguimiento.
+- Chat
+  - se puede ver el chat desde la web para hace si o si tiene que estar logeado
+  - es una implimentacion basica de socket.io en modo brodcast , llegado el caso que halla un modelo de negocio se puede adaptar

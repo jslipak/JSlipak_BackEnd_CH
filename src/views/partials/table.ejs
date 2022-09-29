@@ -1,0 +1,28 @@
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">items</th>
+      <th scope="col">Status</th>
+      <th scope="col">D&T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.forEach((order) => { %>
+    <tr>
+      <th scope="row"> <%= order._id %></th>
+      <td>
+        <ul>
+          <% order.items.forEach((item) => { %>
+          <%- console.log(item) %>
+          <li><%= item.quantity %> X <%= item.pid%></li>
+          <% }) %>
+        </ul>
+      </td>
+      <td><%= order.status %></td>
+      <td><%= order.timestamp %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

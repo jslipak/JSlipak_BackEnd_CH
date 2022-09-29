@@ -32,6 +32,25 @@ class Order {
         next(err);
       }
   }
+
+  async getAllByUser(req,res, next) {
+    console.log(req.userId)
+    try {
+      const obj = await orders.find({user: req.user.userId});
+      res.json({ item: obj });
+      } catch (err) {
+        next(err);
+      }
+}
+  async viewAllByUser(user) {
+    console.log(user)
+    try {
+      const obj = await orders.find({user: user});
+      return obj;
+      } catch (err) {
+       console.log(err)
+      }
+  }
   //No se puede borrar , actulizar por un tema de trazabilidad
  }
 
