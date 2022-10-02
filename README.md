@@ -47,7 +47,7 @@ COOKIE_SECRET= // el secreto para la implementacion de cookies
   - Inicio de sesion a traves de la API (Ejemplo en postman)
   - Creacion de User a traves del localhost en su pantalla de inicio desde el browser
   - Creacion de User a traves de la API (Ejemplo en postman)
-  - Eliminacion de usuarios dedsde la api
+  - Eliminacion de usuarios dedsde la api 
 - Áuth
   - Cuenta con un Login tanto en web como desde la api
   - Cuenta con un logout tanto desde la web como en la api

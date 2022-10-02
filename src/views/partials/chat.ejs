@@ -1,0 +1,20 @@
+<div class="jumbotron" style="background-color: #e7e9eb">
+    <h1 class="display-4">Centro de mensajes</h1>
+    <label for="issueMsg">Issue</label>
+    <input type="text" data-userid=<%- userId  %> class="form-control" id="msgIssue" aria-describedby="emailHelp"
+        name="issueMsg" required />
+    <hr class="my-4" />
+    <div class="form-group">
+        <div class="form-group">
+            <label for="msg">Mensaje:</label>
+            <ul id='msgToAdd' style="list-style-type: none" /> </ul>
+            <input type="text" class="form-control" id="msgInput" aria-describedby="emailHelp"
+                name="productUrl" required />
+            <button id="msgSender" class="btn btn-success">Submit</button>
+        </div>
+        <div id="log"></div>
+    </div>
+</div>
+<script src="/js/socket.io.min.js"></script>
+<script src="/js/sweetalert2.all.min.js"></script>
+<script src="/js/chat.js"></script>

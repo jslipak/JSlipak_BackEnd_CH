@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../services/auth.services');
 const orders = require('../services/order.services');
+const messages = require('../services/message.service');
+
 router.get('/', (req, res) => {
   req.user?.username
     ? res.render('pages/home', {
@@ -16,7 +18,8 @@ router.get('/signup', (req, res) => {
 
 router.get('/home', auth.verifyToken, async(req, res) => {
   const userOrders = await orders.viewAllByUser(req.user.userId);
-  res.render('pages/home', { name: req.user.username, msg: false, orders: userOrders });
+  const userMessages = await messages.getAllByUser(req.user.userId);
+  res.render('pages/home', { name: req.user.username, msg: userMessages, orders: userOrders, userId: req.user.userId });
 });
 
 router.get('/error', (req, res) => {
