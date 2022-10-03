@@ -18,9 +18,7 @@ mongoose
   .then((data) => console.log('mongo connected'))
   .catch((err) => logger.error(err));
 
-app.use(
-  cookieParser( config.cookieSecret),
-);
+app.use(cookieParser(config.cookieSecret));
 app.use(flash());
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
@@ -33,5 +31,6 @@ app.use('/', indexRouter);
 const server = app.listen(puerto, () => {
   console.log(`Servidor inicializado en el puerto ${server.address().port}`);
 });
-
 server.on('error', (err) => logger.fatal(err));
+
+const io = require('socket.io')(server);

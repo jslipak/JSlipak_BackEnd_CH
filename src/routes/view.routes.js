@@ -16,10 +16,15 @@ router.get('/signup', (req, res) => {
   res.render('pages/signup');
 });
 
-router.get('/home', auth.verifyToken, async(req, res) => {
+router.get('/home', auth.verifyToken, async (req, res) => {
   const userOrders = await orders.viewAllByUser(req.user.userId);
   const userMessages = await messages.getAllByUser(req.user.userId);
-  res.render('pages/home', { name: req.user.username, msg: userMessages, orders: userOrders, userId: req.user.userId });
+  res.render('pages/home', {
+    name: req.user.username,
+    msg: userMessages,
+    orders: userOrders,
+    userId: req.user.userId,
+  });
 });
 
 router.get('/error', (req, res) => {
