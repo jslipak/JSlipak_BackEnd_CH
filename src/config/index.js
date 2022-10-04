@@ -15,6 +15,7 @@ const config = {
   twilioTo: process.env.TWILIO_WHATSAPP,
   jwtSecret: process.env.JWT_SECRET,
   cookieSecret: process.env.COOKIE_SECRET,
+  socketPort: process.env.SOCKET_PORT,
 };
 
 module.exports = config;

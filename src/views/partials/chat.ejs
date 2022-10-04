@@ -7,7 +7,13 @@
     <div class="form-group">
         <div class="form-group">
             <label for="msg">Mensaje:</label>
-            <ul id='msgToAdd' style="list-style-type: none" /> </ul>
+            <ul id='msgToAdd' style="list-style-type: none" />
+                <%  msgs.forEach(m => { %>
+                    <li>
+                        <span style="color: blue;"><%- m.issue %> </span> , <span style="color:red"/> <%- m.date %></span>,<span style="color:green"/> <%- m.message %></span>
+                    </li>
+                <% }) %>
+            </ul>
             <input type="text" class="form-control" id="msgInput" aria-describedby="emailHelp"
                 name="productUrl" required />
             <button id="msgSender" class="btn btn-success">Submit</button>

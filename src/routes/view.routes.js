@@ -17,11 +17,14 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/home', auth.verifyToken, async (req, res) => {
+  console.log(`esto es el id ${req.socketIO}`);
   const userOrders = await orders.viewAllByUser(req.user.userId);
   const userMessages = await messages.getAllByUser(req.user.userId);
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.render('pages/home', {
     name: req.user.username,
-    msg: userMessages,
+    msg: false,
+    msgs: userMessages,
     orders: userOrders,
     userId: req.user.userId,
   });
