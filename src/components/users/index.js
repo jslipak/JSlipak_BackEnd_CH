@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const user = require('../services/user.services');
-const upload = require('../middleware/multer.middleware');
+const user = require('./service/user.service');
+const upload = require('../../middleware/multer.middleware');
 
 router.get('/', user.getAll);
 router.delete('/:uid', user.deleteById);

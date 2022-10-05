@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const user = require('../services/user.services');
-const config = require('../config');
+const user = require('../../users/service/user.service');
+const config = require('../../../config');
 class Auth {
- async login(req, res) {
+  async login(req, res) {
     try {
       let { username, password } = req.body;
       const existingUser = await user.getUserByEmail(username);
@@ -21,20 +21,19 @@ class Auth {
       res.status(401).redirect('/error');
     }
   }
-  logout (req, res) {
+  logout(req, res) {
     res.cookie('token', '', { httpOnly: true }).redirect('/');
   }
   verifyToken(req, res, next) {
     try {
-        const token = req.cookies.token;
-        const decoded = jwt.verify(token, config.jwtSecret);
-        req.user = decoded;
-        next();
-      } catch (err) {
-        res.redirect('/');
-      }
+      const token = req.cookies.token;
+      const decoded = jwt.verify(token, config.jwtSecret);
+      req.user = decoded;
+      next();
+    } catch (err) {
+      res.redirect('/');
     }
+  }
 }
-
 
 module.exports = new Auth();

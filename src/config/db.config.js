@@ -1,6 +1,11 @@
-const products = require('../models/product.models');
-const carts = require('../models/cart.models');
-const users = require('../models/user.models');
-const orders = require('../models/order.models');
+const products = require('../components/products/model/product.model');
+const carts = require('../components/carts/model/cart.model');
+const users = require('../components/users/model/user.model');
+const orders = require('../components/orders/model/order.model');
 
-module.exports = { products: products, carts: carts, users: users, orders: orders };
+module.exports = {
+  products: products,
+  carts: carts,
+  users: users,
+  orders: orders,
+};

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const viewRoutes = require('./view.routes');
-const authRoutes = require('./auth.routes');
-const userRoutes = require('./user.routes');
+const viewRoutes = require('../components/views');
+const authRoutes = require('../components/auths');
+const userRoutes = require('../components/users');
 const apiRoutes = require('./api.routes');
 
 router.use('/api', apiRoutes);

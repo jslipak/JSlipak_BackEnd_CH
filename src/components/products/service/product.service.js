@@ -1,5 +1,5 @@
-const { products } = require(`../config/db.config`);
-const { parseMongoId } = require('../utils/db.utils');
+const { products } = require('../../../config/db.config');
+const { parseMongoId } = require('../../../utils/db.utils');
 
 class Product {
   async getAll(req, res) {
@@ -28,14 +28,14 @@ class Product {
       next(err);
     }
   }
-  
-  async getByCategory(req, res, next){
-    try{
-      const category = req.params.category
-      const obj = await products.find({category: category})
-      res.json({items: obj})
-    }catch(err){
-      next(err)
+
+  async getByCategory(req, res, next) {
+    try {
+      const category = req.params.category;
+      const obj = await products.find({ category: category });
+      res.json({ items: obj });
+    } catch (err) {
+      next(err);
     }
   }
 

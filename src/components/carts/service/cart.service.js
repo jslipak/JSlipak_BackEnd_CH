@@ -1,8 +1,8 @@
-const { carts, products } = require('../config/db.config');
-const send = require('../utils/twilio.utils');
-const sendMail = require('../utils/nodemailer.utils');
-const config = require('../config');
-const { parseMongoId } = require('../utils/db.utils');
+const { carts, products } = require('../../../config/db.config');
+const send = require('../../../utils/twilio.utils');
+const sendMail = require('../../../utils/nodemailer.utils');
+const config = require('../../../config');
+const { parseMongoId } = require('../../../utils/db.utils');
 
 class Cart {
   async getAll(req, res) {

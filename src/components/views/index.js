@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../services/auth.services');
-const orders = require('../services/order.services');
-const messages = require('../services/message.service');
+const auth = require('../auths/service/auth.service');
+const orders = require('../orders/service/order.service');
+const messages = require('../messages/service/message.service');
 
 router.get('/', (req, res) => {
   req.user?.username

@@ -1,4 +1,4 @@
-const msg = require('./message.service');
+const msg = require('../../messages/service/message.service');
 
 module.exports = function (io) {
   io.on('connection', (socket) => {

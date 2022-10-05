@@ -12,7 +12,7 @@ const logger = require('./utils/logger.utils');
 const indexRouter = require('./routes/index.routes');
 const server = require('http').Server(app);
 const io = require('socket.io')(server, { cors: { origin: '*' } });
-const socket = require('./services/socket.services');
+const socket = require('./components/sockets/service/socket.service');
 
 mongoose
   .connect(URL, {

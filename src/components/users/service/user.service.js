@@ -1,6 +1,6 @@
-const UserModel = require('../models/user.models');
-const mailer = require('../utils/nodemailer.utils');
-const logger = require('../utils/logger.utils');
+const UserModel = require('../model/user.model');
+const mailer = require('../../../utils/nodemailer.utils');
+const logger = require('../../../utils/logger.utils');
 const { mongo } = require('mongoose');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');

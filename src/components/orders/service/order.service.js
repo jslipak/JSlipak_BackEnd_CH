@@ -1,4 +1,4 @@
-const orders = require('../models/order.models');
+const orders = require('../model/order.model');
 
 // ASK: why is the Business Logic to changeStatusById
 class Order {

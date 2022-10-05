@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Products = require(`../services/product.services`);
-const auth = require('../services/auth.services');
+const Products = require('./service/product.service');
+const auth = require('../auths/service/auth.service');
 
 router.get('/', Products.getAll);
 router.get('/category/:category', Products.getByCategory);
